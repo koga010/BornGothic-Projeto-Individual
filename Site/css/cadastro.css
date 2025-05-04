@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color:   #0f0f0f;
+  color: #fff;
+  font-family: "Eczar", serif;;
+  
+}
+
+header {
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+header .logo {
+  width: 20%;
+  margin-left: 50px;
+}
+
+header a {
+  color: white;
+  font-size: 28px;
+  text-decoration: none;
+  font-family: 'UnifrakturMaguntia', cursive;
+  transition: color 0.3s ease;
+  text-align: right;
+  margin: 20px;
+}
+
+header a:hover {
+  color: #a70000;
+}
+
+header a:last-child {
+  color: #a70000;
+}
+
+/***** CADASTRO *****/
+
+.img{
+  background: url(../img/Ellipse.png) no-repeat;
+  height: 60pc;
+  margin-left: 17%;
+}
+
+.container {
+  margin-right: 19%;
+  display: flex;
+  justify-content: center;
+  height: 72%;
+}
+
+.cadastro .card-cadastro {
+  width: 520px;
+  background-image: linear-gradient(to top, #1d1d1d, #000000);
+  border-radius: 7px;
+  margin-top: 20%;
+  padding: 20px;
+}
+
+.container .card-cadastro h2 {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.input {
+  background-color: gray;
+  width: 100%;
+  height: 35px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  border-radius: 20px;  
+}
+
+.input input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding-left: 35px;
+  border-radius: 20px;
+}
+
+.input i {
+  position: absolute;
+  left: 5px;
+  color: rgb(0, 0, 0);
+  margin-left: 5px;
+}
+
+.botao {
+  margin-left: 26%;
+  margin-top: 20px;
+  background-color: #a70000;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  border: 0;
+  border-radius: 8px;
+  height: 35px;
+  width: 50%;
+}
+
+span {
+  margin-left: 10px;
+}
+
+.login a {
+  color: #a70000;
+}
+

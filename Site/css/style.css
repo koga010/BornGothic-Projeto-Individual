@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color:   #a8a8a8;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+header .logo {
+  width: 20%;
+  margin-left: 50px;
+}
+
+header a {
+  color: white;
+  font-size: 28px;
+  text-decoration: none;
+  font-family: 'UnifrakturMaguntia', cursive;
+  transition: color 0.3s ease;
+  text-align: right;
+  margin: 20px;
+}
+
+header a:hover {
+  color: #a70000;
+}
+
+header a:last-child {
+  color: #a70000;
+}
+  
+.hero {
+  background-image: url('caminho-da-imagem.jpg');
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 50px;
+  padding-right: 20px;
+}
+
+.hero-text {
+  max-width: 600px;
+  color: #fff;
+}
+
+.hero h1 {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 4rem;
+}
+
+.hero-text p {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+section {
+  padding: 60px 40px;
+}
+  
