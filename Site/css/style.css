@@ -10,6 +10,8 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/*HEADER*/
+
 header {
   top: 0;
   width: 100%;
@@ -45,7 +47,9 @@ header a:hover {
 header a:last-child {
   color: #a70000;
 }
-  
+
+/*BANNER*/
+
 .banner {
   background-image: url(../img/banner.png);
   height: 113vh;
@@ -60,11 +64,11 @@ header a:last-child {
 
 .banner h1 {
   font-family: 'UnifrakturMaguntia';
-  font-size: 4rem;
+  font-size: 6rem;
 }
 
 .banner-text p {
-  margin-top: 20px;
+  padding: 20px;
   font-size: 25px;
   line-height: 1.6;
   font-family: 'Eczar';
@@ -74,12 +78,13 @@ section {
   padding: 60px 40px;
 }
 
+/*CULTURA*/
 
 .cultura h1{
   display: flex;
   justify-content: center;
   font-family: 'UnifrakturMaguntia';
-  font-size: 50px;
+  font-size: 5rem;
 }
 
 .cultura1 {
@@ -91,7 +96,7 @@ section {
   max-width: 900px;
   font-family: 'Eczar';
   font-size: 20px;
-  margin-top: 100px;
+  padding: 100px;
 }
 
 .cultura1 .img-bandas {
@@ -110,7 +115,7 @@ section {
   max-width: 900px;
   font-family: 'Eczar';
   font-size: 20px;
-  margin-top: 100px;
+  padding: 100px;
   margin-left: 70px;
 }
 
@@ -121,14 +126,83 @@ section {
   height: 350px;
 }
 
+/*ESTETICA*/
+
 .estetica {
-  background-image: linear-gradient(90deg, #ffffff, #100030);
+  background-image: linear-gradient(90deg, #221932, #000000);
 }
 
 .estetica h1{
   display: flex;
   justify-content: center;
   font-family: 'UnifrakturMaguntia';
-  font-size: 50px;
+  font-size: 5rem;
 }
 
+.estetica-dividida {
+  flex-direction: row;
+  display: flex;
+}
+
+.estetica-esquerda {
+  width: 65%;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  padding: 50px;
+  justify-content: space-between;
+}
+
+.estetica-direita {
+  width: 35%;
+}
+
+.estetica p {
+  max-width: 700px;
+  font-family: 'Eczar';
+  font-size: 20px;
+  padding: 20px;
+}
+
+.estetica-direita p {
+  max-width: 500px;
+  font-family: 'Eczar';
+  font-size: 22px;
+  text-align: right;
+  
+}
+
+.estetica h2 {
+  font-family: 'UnifrakturMaguntia';
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.estetica-esquerda .img-trad {
+  background-image: url("../img/trad.png");
+  background-size: cover;
+  width: 330px;
+  height: 390px;
+}
+
+.estetica-esquerda .img-romantic {
+  background-image: url("../img/romantic.png");
+  background-size: cover;
+  width: 300px;
+  height: 400px;
+  margin-bottom: 25px;
+}
+.romantic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.trad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
