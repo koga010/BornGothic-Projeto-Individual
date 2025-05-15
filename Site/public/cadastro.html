@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro - BornGothic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/cadastro.css">
+</head>
+<body>
+
+  <header>
+        <img class="logo" src="img/Born Gothic.png" alt="">
+
+        <div class="links">
+            <a href="./index.html#cultura">Cultura</a>
+            <a href="./index.html#estetica">Estética</a>
+            <a href="./index.html#simbolismo">Simbolismo</a>
+            <a href="./index.html#destaques">Destaques</a>
+            <a href="./index.html#sobre">Sobre Mim</a>
+            <a href="./cadastro.html">Quiz</a>
+        </div>
+        
+  </header>
+
+  <div class="cadastro">
+    <div class="img">
+
+      <div class="container">
+        <div class="card card-cadastro">
+          <h2>Realize seu cadastro!</h2>
+
+
+          <span>Nome de usuário</span>
+          <div class="input">
+            <input type="text" id="input_nome" placeholder="Insira seu nome">
+            <i class="fa-solid fa-user"></i>
+          </div>
+
+          <span>E-mail</span>
+          <div class="input">
+            <input type="text" id="input_email" placeholder="xpto@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+
+          <span>Senha</span>
+          <div class="input">
+            <input type="text" id="input_senha" placeholder="*******">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+
+          <span>Confirmar senha</span>
+          <div class="input">
+            <input type="text" id="input_confirmaSenha" placeholder="*******">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+
+          <button class="botao" onclick="cadastrar()">Cadastrar-se</button> <br><br>
+          
+          <div class="login">
+            <span>Já possui cadastro?</span>
+            <a href="login.html">Login</a>
+          </div>
+        
+        </div>
+
+        <div id="card_erro" class="erro">
+            <div id="mensagem_erro"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+<script>
+
+  function cadastrar() {
+        var nome = input_nome.value
+        var email = input_email.value
+        var senha = input_senha.value
+        var confirmacao_senha = input_confirmaSenha.value
+
+        if (nome.length < 3) {
+            mensagem_erro.innerHTML = `<b>Nome inválido!</b><br><br> Deve ter no mínimo 3 caracteres!`
+            document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+            setTimeout(() => {
+                mensagem_erro.innerHTML = ``
+                document.getElementById("card_erro").style.backgroundColor = ""
+            }, 4000)
+
+        } else if ((email.includes('@') && email.includes('.')) == false) {
+            mensagem_erro.innerHTML = `<b>Email inválido!</b><br><br> Deve conter '@' e '.'!`
+            document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+            setTimeout(() => {
+                mensagem_erro.innerHTML = ``
+                document.getElementById("card_erro").style.backgroundColor = ""
+            }, 4000)
+
+        } else if (senha.length < 8) {
+            mensagem_erro.innerHTML = `<b>Senha inválida!</b><br> Deve ter no mínimo 8 caracteres sendo 1 caractere maiúsculo e 1 caractere especial!`
+            document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+            setTimeout(() => {
+                mensagem_erro.innerHTML = ``
+                document.getElementById("card_erro").style.backgroundColor = ""
+            }, 4000)
+
+        } else if (
+            (senha.includes('A') || senha.includes('B') || senha.includes('C') || senha.includes('D') || senha.includes('E') || senha.includes('F') || senha.includes('G') || senha.includes('H') || senha.includes('I') || senha.includes('J') || senha.includes('K') || senha.includes('L') || senha.includes('M') || senha.includes('N') || senha.includes('O') || senha.includes('P') || senha.includes('Q') || senha.includes('R') || senha.includes('S') || senha.includes('T') || senha.includes('U') || senha.includes('V') || senha.includes('W') || senha.includes('X') || senha.includes('Y') || senha.includes('Z')) == false
+        ) {
+            mensagem_erro.innerHTML = `<b>Senha inválida!</b><br> Deve ter no mínimo 8 caracteres sendo 1 caractere maiúsculo e 1 caractere especial!`
+            document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+            setTimeout(() => {
+                mensagem_erro.innerHTML = ``
+                document.getElementById("card_erro").style.backgroundColor = ""
+            }, 4000)
+
+        } else if (
+            (senha.includes('.') || senha.includes('-') || senha.includes('_') || senha.includes('@') || senha.includes('#') || senha.includes('$') || senha.includes('%') || senha.includes('&') || senha.includes('*') || senha.includes('!') || senha.includes('?') || senha.includes(',') || senha.includes(';') || senha.includes(':')) == false
+        ) {
+            mensagem_erro.innerHTML = `<b>Senha inválida!</b><br> Deve ter no mínimo 8 caracteres sendo 1 caractere maiúsculo e 1 caractere especial!`
+            document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+            setTimeout(() => {
+                mensagem_erro.innerHTML = ``
+                document.getElementById("card_erro").style.backgroundColor = ""
+            }, 4000)
+
+        } else if (confirmacao_senha != senha) {
+            mensagem_erro.innerHTML = `<b>Confirmação inválida!</b><br><br> As senhas devem ser iguais!`
+            document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+            setTimeout(() => {
+                mensagem_erro.innerHTML = ``
+                document.getElementById("card_erro").style.backgroundColor = ""
+            }, 4000)
+
+        } else {
+
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nomeServer: nome,
+                    emailServer: email,
+                    senhaServer: senha
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+
+                        mensagem_erro.innerHTML = `<b>AUTORIZADO!</b><br><br> Cadastro efetuado com sucesso!`
+                        document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+                        setTimeout(() => {
+                            mensagem_erro.innerHTML = ``
+                            document.getElementById("card_erro").style.backgroundColor = ""
+                            window.location.href = "login.html"
+                        }, 2000)
+
+                    } else {
+                        mensagem_erro.innerHTML = `<b>Inválido!</b><br><br> Email já cadastrado!`
+                        document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+                    }
+                })
+
+        }
+    }
+
+</script>
