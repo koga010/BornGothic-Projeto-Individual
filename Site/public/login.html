@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - BornGothic</title>
+
+  <title>Login | BornGothic</title>
 
   <script src="./js/sessao.js"></script>
-
+  
   <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="css/login.css">
@@ -41,17 +42,17 @@
 
           <span>E-mail</span>
           <div class="input">
-            <input type="text" placeholder="xpto@gmail.com">
+            <input type="text" id="input_email" placeholder="xpto@gmail.com">
             <i class="fa-solid fa-envelope"></i>
           </div>
 
           <span>Senha</span>
           <div class="input">
-            <input type="text" placeholder="*******">
+            <input type="text" id="input_senha" placeholder="*******">
             <i class="fa-solid fa-lock"></i>
           </div>
 
-          <button class="botao">Login</button> <br><br>
+          <button class="botao" onclick="entrar()">Login</button> <br><br>
           
           <div class="cadastro">
             <span>Não possui cadastro?</span>
@@ -59,6 +60,11 @@
           </div>
         
         </div>
+
+        <div id="card_erro" class="erro">
+          <div id="mensagem_erro"></div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -70,23 +76,20 @@
 
 
     function entrar() {
-        aguardar();
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
+            mensagem_erro.innerHTML = `<b>ERRO!<br> Os campos não podem ficar em branco!`
+            document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+            setTimeout(() => {
+                mensagem_erro.innerHTML = ``
+                document.getElementById("card_erro").style.backgroundColor = ""
+            }, 4000)
         }
         else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
 
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -109,33 +112,40 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
                 });
+
+                mensagem_erro.innerHTML = `<b>AUTORIZADO!<br> Login efetuado com sucesso!`
+                document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+                setTimeout(() => {
+                    mensagem_erro.innerHTML = ``
+                    document.getElementById("card_erro").style.backgroundColor = ""
+                    window.location = "conteudo.html"
+                }, 2000)
 
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
+                mensagem_erro.innerHTML = `<b>ERRO!<br> Email e/ou senha inválidos!`
+                document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+                setTimeout(() => {
+                    mensagem_erro.innerHTML = ``
+                    document.getElementById("card_erro").style.backgroundColor = ""
+                }, 4000)
+
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 
         }).catch(function (erro) {
             console.log(erro);
         })
+  }
 
-        return false;
-    }
+}
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
 
 </script>
