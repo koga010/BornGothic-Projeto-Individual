@@ -82,7 +82,7 @@ section {
 /*CULTURA*/
 
 .cultura h1 {
-  text-shadow: 0 4px 5px #ffffffa6;
+  text-shadow: 0 4px 5px #ffffff6f;
   display: flex;
   justify-content: center;
   font-family: 'UnifrakturMaguntia';
@@ -118,7 +118,6 @@ section {
   font-family: 'Eczar';
   font-size: 20px;
   padding: 100px;
-  margin-left: 70px;
 }
 
 .cultura2 .img-death {
@@ -135,7 +134,7 @@ section {
 }
 
 .estetica h1 {
-  text-shadow: 0 4px 5px #ffffffa6;
+  text-shadow: 0 4px 5px #ffffff6f;
   display: flex;
   justify-content: center;
   font-family: 'UnifrakturMaguntia';
@@ -351,3 +350,86 @@ section {
   height: 150px;
   margin: 20px;
 }
+
+/*DESTAQUES*/
+
+.destaque h1 {
+  text-shadow: 0 4px 5px #ffffff6f;
+  display: flex;
+  justify-content: center;
+  font-family: 'UnifrakturMaguntia';
+  font-size: 5rem;
+}
+
+.destaque1 {
+  flex-direction: row;
+  display: flex;
+}
+
+.destaque1 p {
+  max-width: 900px;
+  font-family: 'Eczar';
+  font-size: 20px;
+  padding: 100px;
+}
+
+.destaque1 .img-destaque1 {
+  background: url("../img/destaques1.png");
+  background-size: cover;
+  width: 600px;
+  height: 400px;
+}
+
+.destaque2 {
+  flex-direction: row;
+  display: flex;
+}
+
+.destaque2 p {
+  max-width: 900px;
+  font-family: 'Eczar';
+  font-size: 20px;
+  padding: 50px;
+}
+
+.destaque2 .img-destaque2 {
+  background: url("../img/destaque2.png");
+  background-size: cover;
+  width: 580px;
+  height: 350px;
+}
+
+.destaque3 {
+  flex-direction: row;
+  display: flex;
+}
+
+.destaque3 p {
+  max-width: 900px;
+  font-family: 'Eczar';
+  font-size: 20px;
+  padding: 100px;
+}
+
+.destaque3 .img-destaque3 {
+  background: url("../img/destaque3.png");
+  background-size: cover;
+  width: 400px;
+  height: 500px;
+}
+
+/*SOBRE MIM*/
+
+.sobre {
+  background-color: #fff;
+}
+
+.sobre h1 {
+  text-shadow: 0 4px 5px #000000;
+  display: flex;
+  justify-content: center;
+  font-family: 'UnifrakturMaguntia';
+  font-size: 5rem;
+  color: #000000;
+}
+
