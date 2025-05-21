@@ -1,0 +1,162 @@
+/* Não usar pure white or pure black: https://uxplanet.org/basicdesign-never-use-pure-black-in-typography-36138a3327a6 */
+/* The 4-point grid system: https://medium.com/@sainzkike/controlling-spacing-in-design-systems-multiple-spacing-9bf1afec87f */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 10px 10px 10px 10px;
+}
+
+body {
+  background-image: linear-gradient(90deg, #353535, #000000);
+  color: #ffffff;
+  font-family: "Eczar", serif;
+}
+
+.inicio {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'UnifrakturMaguntia';
+    font-size: 30px;
+}
+
+.home {
+    color: #a70000;
+    font-size: 50px;
+    display: flex;
+    justify-content: end;
+}
+
+#btnIniciarQuiz {
+    font-family: 'UnifrakturMaguntia';
+    border-radius: 10px;
+    color: #fff;
+    font-size: 20px;
+    background-color: #a70000;
+    border-style: none;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quiz h2 {
+    font-family: 'UnifrakturMaguntia';
+    font-size: 50px;
+}
+
+.quiz .img-quiz1 {
+    background-image: url(../img/quiz1.jpeg);
+    background-size: cover;
+    width: 520px;
+    height: 300px;
+}
+
+.quiz {
+    flex-direction: column;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    width: 600px;
+    box-shadow: 0 10px 20px #000000;
+    border-radius: 20px;
+}
+
+.flex-colunar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.width-fit-content {
+    width: fit-content;
+}
+
+.padding-8 {
+    padding: 8px;
+}
+
+.border-primary {
+    border-radius: 8px;
+}
+
+.border-secondary {
+    border-radius: 8px;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+#pontuacaoEJogo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+#pontuacao {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 10px 20px #000000;
+    max-width: 300px;
+    text-align: center;
+    display: none;
+    align-self: center;
+    margin-top: 20px;
+}
+
+#pontuacaoDuranteJogo span,
+#pontuacaoFinalJogo span {
+    font-size: 16px;
+    color: #a70000;
+}
+
+#pontuacaoFinalJogo {
+    display: none;
+}
+
+#spanPontuacaoFinal {
+    color: #a70000;
+    font-weight: bold;
+}
+
+#msgFinal {
+    font-style: italic;
+    margin-top: 8px;
+}
+
+#jogo {
+    box-shadow: 0 10px 20px #000000;
+    width: 800px;
+    align-self: center;
+    justify-self: center;
+    display: none;
+    gap: 0;
+}
+
+#infoQuestao span {
+    color: #a70000;
+    font-size: 20px;
+}
+
+#perguntaDaQuestaoAtual {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#infoAlternativas span {
+    color: #ffffff;
+    font-size: 12px;
+}
+
+#opcoes {
+    gap: 8px;
+}
+
+input[type='radio'] {
+   accent-color: #a70000;
+}
