@@ -80,10 +80,10 @@
             </div>
 
             <div id="botoes" class="flex-colunar padding-8">
-                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                <button onclick="submeter()" id="btnSubmeter">Enviar resposta</button>
                 <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
                 <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
-                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                <!--<button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>-->
             </div>
 
         </div>
@@ -95,31 +95,94 @@
     const listaDeQuestoes = [
 
         {
-            pergunta: "Qual mês tem 30 dias?",
-            alternativaA: "Janeiro",
-            alternativaB: "Dezembro",
-            alternativaC: "Junho",
-            alternativaD: "Agosto",
+            pergunta: "Onde e quando surgiu a subcultura gótica moderna?",
+            alternativaA: "Alemanha, década de 1960",
+            alternativaB: "Estados Unidos, década de 1990",
+            alternativaC: "Reino Unido, final da década de 1970 e início dos anos 1980",
+            alternativaD: "França, década de 1920",
             alternativaCorreta: "alternativaC"
         },
 
         {
-            pergunta: "Quantas horas tem em um dia?",
-            alternativaA: "30 horas",
-            alternativaB: "38 horas",
-            alternativaC: "48 horas",
-            alternativaD: "24 horas",
+            pergunta: "Qual estilo musical está mais diretamente associado à subcultura gótica?",
+            alternativaA: "Samba e MPB",
+            alternativaB: "Darkwave, Gothic Rock e Ethereal Wave",
+            alternativaC: "Heavy Metal tradicional",
+            alternativaD: "Grunge e Rap",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Quais cores são predominantes na estética visual gótica?",
+            alternativaA: "Branco e azul claro",
+            alternativaB: "Verde e dourado",
+            alternativaC: "Preto, com toques de lilás, roxo e carmesim",
+            alternativaD: "Amarelo e vermelho",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Qual é a origem histórica do termo “gótico”?",
+            alternativaA: "Vem dos Godos, povo germânico que invadiu o Império Romano",
+            alternativaB: "Refere-se a um estilo de pintura italiana",
+            alternativaC: "Deriva de uma tribo africana medieval",
+            alternativaD: "Nasceu com a Revolução Francesa",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Por que o termo “gótico” é considerado pejorativo em sua origem?",
+            alternativaA: "Porque foi associado a práticas religiosas proibidas",
+            alternativaB: "Porque era usado para designar tudo que era considerado bárbaro ou rude",
+            alternativaC: "Porque representava um estilo de governo ditatorial",
+            alternativaD: "Porque era usado por elites para descrever camponeses",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Qual foi o impacto da ditadura militar brasileira na chegada da subcultura gótica ao Brasil?",
+            alternativaA: "Acelerou a chegada do movimento gótico",
+            alternativaB: "Proibiu totalmente a expressão artística",
+            alternativaC: "Condicionou a produção cultural e atrasou a popularização do termo",
+            alternativaD: "Incentivou a moda gótica como forma de resistência",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Quais autores brasileiros apresentam elementos da estética gótica em suas obras?",
+            alternativaA: "Machado de Assis, Jorge Amado e Clarice Lispector",
+            alternativaB: "Ariano Suassuna, Rachel de Queiroz, José de Alencar",
+            alternativaC: "Carlos Drummond, Cecília Meireles, Mário Quintana",
+            alternativaD: "Álvares de Azevedo, Cruz e Souza, Augusto dos Anjos",
             alternativaCorreta: "alternativaD"
         },
 
         {
-            pergunta: "Qual destes números é ímpar?",
-            alternativaA: "Dez",
-            alternativaB: "Doze",
-            alternativaC: "Oito",
-            alternativaD: "Onze",
+            pergunta: "Como a subcultura gótica se posiciona em relação ao gênero e à estética?",
+            alternativaA: "Reforça papéis tradicionais de gênero",
+            alternativaB: "Segue tendências da moda comercial",
+            alternativaC: "Promove a androginia e a liberdade de expressão visual",
+            alternativaD: "Se limita a roupas pretas e visual sombrio apenas para mulheres",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Qual é a visão da subcultura gótica sobre o consumismo e a moda?",
+            alternativaA: "Pratica o anticonsumismo e prefere brechós, de forma mais sustentável",
+            alternativaB: "Segue tendências populares para ganhar visibilidade",
+            alternativaC: "É entusiasta do fast-fashion",
+            alternativaD: "Não possui relação com escolhas de consumo",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "A subcultura gótica é aberta a quais tipos de pessoas?",
+            alternativaA: "Apenas pessoas com estilo dark",
+            alternativaB: "Apenas jovens urbanos",
+            alternativaC: "Apenas pessoas de determinada classe social",
+            alternativaD: "Todas as pessoas, independentemente de gênero, raça, sexualidade ou condição",
             alternativaCorreta: "alternativaD"
-        }
+        },
 
     ]
 
@@ -219,10 +282,10 @@
         limparCoresBackgroundOpcoes()
     }
 
-    function tentarNovamente() {
+    //function tentarNovamente() {
         // atualiza a página
-        window.location.reload()
-    }
+    //    window.location.reload()
+    //}
 
     function checarResposta() {
         const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 

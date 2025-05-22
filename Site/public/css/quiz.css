@@ -160,3 +160,29 @@ body {
 input[type='radio'] {
    accent-color: #a70000;
 }
+
+#btnSubmeter {
+    font-family: 'UnifrakturMaguntia';
+    border-radius: 10px;
+    color: #fff;
+    font-size: 20px;
+    background-color: #a70000;
+    border-style: none;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#btnProx {
+    font-family: 'UnifrakturMaguntia';
+    border-radius: 10px;
+    color: #a70000;
+    font-size: 20px;
+    background-color: #ffffff;
+    border-style: none;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
