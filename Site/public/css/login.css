@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color:   #0f0f0f;
+  background-color: #0f0f0f;
   color: #fff;
   font-family: "Eczar", serif;;
   
@@ -15,21 +15,26 @@ header {
   top: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   gap: 30px;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.5);
-  flex-wrap: wrap;
 }
 
 header .logo {
-  width: 20%;
+  width: 240px;
+  height: 50px;
   margin-left: 50px;
 }
 
-header a {
+header .links {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+header .links a {
   color: white;
   font-size: 28px;
   text-decoration: none;
@@ -46,6 +51,7 @@ header a:hover {
 header a:last-child {
   color: #a70000;
 }
+
 
 /******* LOGIN *********/
 

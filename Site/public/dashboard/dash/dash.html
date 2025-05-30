@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | BornGothic</title>
+    <link rel="stylesheet" href="css/dash.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" 
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="Js/dashJS.js"></script>
+</head>
+<body>
+    
+    <header>
+        <img class="logo" src="img/Born Gothic.png" alt="">
+
+        <div class="links">
+            <a class="home" href="index.html">
+                <i class="fa-sharp fa-solid fa-arrow-right-from-bracket" class="link-icone"></i>
+            </a>
+        </div>
+    </header> 
+
+    <div id="container">
+
+        <div class="boxDash">
+            <h3 id="UsernameExib">Bem-vindo, <span id="b_usuario">usuário</span>!
+                <br>
+            </h3>
+
+            <div class="containerKpi">
+                <div class="boxKpi">Erros<p id="totalErros">0</p>
+                </div>
+                <div class="boxKpi">Acertos<p id="totalAcertos"></p>
+                </div>
+                <div class="boxKpi">Tentativas<p id="totalQuizzesJogados">0</p>
+                </div>
+
+                <div class="boxKpi"> Usuários cadastrados:<p id="totalUsuarios">0</p>
+                </div>
+                <div class="boxKpi">Última tentativa:<p id="ultimaTentativa">2025-03-20</p>
+                </div>
+            </div>
+            <div class="dash">
+
+                <div class="pontuacao">
+                    <canvas id="pontuacao"></canvas>
+                </div>
+
+                <div class="idade">
+                    <canvas id="idade"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    window.onload = function () {
+        const bUsuario = document.getElementById("b_usuario");
+        const nomeUsuario = sessionStorage.NOME_USUARIO;
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        //if (!idUsuario) {
+        //    alert("Usuário não autenticado. Faça login novamente.");
+        //    window.location.href = "login.html";
+        //    return;
+        //}
+
+        bUsuario.textContent = nomeUsuario;
+        obterDadosQuiz(idUsuario);
+        buscarTotalUsuarios();
+    };
+
+
+    function buscarTotalUsuarios() {
+        fetch("/usuarios/total")
+            .then(res => res.json())
+            .then(dado => {
+                document.getElementById("totalUsuarios").textContent = dado.total;
+            })
+            .catch(erro => {
+                console.error("Erro ao buscar total de usuários:", erro);
+            });
+    }
+
+    function obterDadosQuiz(idUsuario) {
+        fetch(`/dash/exibir?idUsuario=${idUsuario}`)
+            .then(resposta => {
+                if (!resposta.ok) {
+                    throw new Error("Erro ao obter dados: " + resposta.status);
+                }
+                return resposta.json();
+            })
+            .then(dados => {
+                console.log("Dados recebidos:", dados);
+                exibirDados(dados);
+            })
+            .catch(erro => {
+                console.error("Erro ao buscar dados:", erro);
+                alert("Erro ao buscar dados do quiz.");
+            });
+    }
+
+    function exibirDados(dados) {
+        let totalAcertos = 0;
+        let totalErros = 0;
+        let totalQuizzesJogados = dados.length;
+
+        let ultimaTentativa = null;
+
+        dados.forEach(resultado => {
+            totalAcertos += resultado.acertos;
+            totalErros += resultado.erros;
+
+            const dataResposta = new Date(resultado.data_resposta);
+            if (!ultimaTentativa || dataResposta > ultimaTentativa) {
+                ultimaTentativa = dataResposta;
+            }
+        });
+
+
+        document.getElementById("totalAcertos").textContent = totalAcertos;
+        document.getElementById("totalErros").textContent = totalErros;
+        document.getElementById("totalQuizzesJogados").textContent = totalQuizzesJogados;
+
+        if (ultimaTentativa) {
+            document.getElementById("ultimaTentativa").textContent = ultimaTentativa.toISOString().split('T')[0];
+
+        }
+
+        atualizarGrafico(totalAcertos, totalErros);
+    }
+
+    function atualizarGrafico(acertos, erros) {
+        const canvasId = 'pontuacao';
+        const ctx = document.getElementById(canvasId).getContext('2d');
+
+        if (window.graficoAcertosErros instanceof Chart) {
+          window.graficoAcertosErros.destroy();
+        }
+
+        window.graficoAcertosErros = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Acertos', 'Erros'],
+                datasets: [{
+                    label: 'Desempenho do Usuário',
+                    data: [acertos, erros],
+                    backgroundColor: ['#38B622', '#FF0000']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Desempenho no Quiz',
+                        color: 'white',
+                        font: { size: 18 }
+                    },
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Quantidade',
+                            color: "white"
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>

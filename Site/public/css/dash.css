@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: linear-gradient(90deg, #353535, #000000);
+  color: #fff;
+  font-family: "Eczar", serif;;
+  
+}
+
+header {
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px;
+
+}
+
+header .logo {
+  width: 240px;
+  height: 50px;
+  margin-left: 50px;
+}
+
+header .links {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+header .links a {
+  color: white;
+  font-size: 50px;
+  text-decoration: none;
+  font-family: 'UnifrakturMaguntia', cursive;
+  transition: color 0.3s ease;
+  text-align: right;
+  margin: 20px;
+}
+
+header a:hover {
+  color: #a70000;
+}
+
+header a:last-child {
+  color: #a70000;
+}
+
+#container {
+    height: 647px;
+    display: flex;
+}
+
+#UsernameExib {
+    display: flex;
+    color: #a70000;
+    justify-self: start;
+    margin-bottom: 30px;
+    padding: 10px;
+    font-size: 25px;
+    width: 97%;
+
+}
+
+#b_usuario {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+
+#logoQuiz {
+    position: absolute;
+    z-index: -1;
+    opacity: 40%;
+    width: 700px;
+    right: 0;
+    bottom: 0;
+}
+
+.boxDash {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.containerKpi {
+    padding: 10px;
+    width: 80%;
+    background-color: rgba(95, 158, 160, 0.4);
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    gap: 20px;
+    height: 80px;
+    align-items: center;
+}
+
+.boxKpi {
+    width: 25%;
+    height: 97%;
+    background-color: #a70000;
+    color: #ECE9E9;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+
+    span {
+        font-size: 25px;
+        font-family: Poppins;
+        font-weight: 700;
+    }
+}
+
+.dash {
+    display: flex;
+    gap: 100px;
+    padding-top: 20px;
+    align-items: center;
+}
+
+.pontuacao {
+    width: 600px;
+    background-color: #a70000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 5px 10px 1px #000;
+}
+
+.topRankingBox {
+    color: #ECE9E9;
+    background-color: #a70000;
+    width: 300px;
+    height: 200px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 1px 5px 10px 1px #000;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.topRankingBox h3 {
+    text-align: center;
+    text-decoration: underline;
+
+}
+
+.topRankingBox ol {
+    list-style: none;
+    gap: 10px;
+    margin-top: 10px;
+    width: 80%;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

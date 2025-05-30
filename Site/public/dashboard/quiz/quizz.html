@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz | BornGothic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">  
+    <link rel="stylesheet" href="./../../css/quiz.css">
+</head>
+
+
+<body onload="onloadEsconder()">
+
+    <header>
+        <img class="logo" src="../../img/Born Gothic.png" alt="">
+
+        <div class="links">
+            <a class="home" href="index.html">
+                <i class="fa-sharp fa-solid fa-arrow-right-from-bracket" class="link-icone"></i>
+            </a>
+        </div>
+    </header> 
+
+            <div class="container">
+                <div class="perguntas">
+                    <div class="questoes hide">
+                        <span class="pergunta">Pergunta</span>
+                        <div class="respostas">
+                            <button class="botoes answer">Resposta1</button>
+                            <button class="botoes answer">Resposta2</button>
+                            <button class="botoes answer">Resposta3</button>
+                            <button class="botoes answer">Resposta4</button>
+                        </div>
+                    </div>
+                    <div class="comecar-avancar">
+                        <button class="start botoes">Começar</button>
+                        <button class="next botoes hide">Próxima pergunta</button>
+                    </div>
+                </div>
+            </div>
+
+        <script src="../../assets/js/quiz.js"></script>
+</body>
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>

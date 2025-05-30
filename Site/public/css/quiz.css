@@ -4,185 +4,167 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 10px 10px 10px 10px;
+  padding: 0;
 }
 
 body {
-  background-image: linear-gradient(90deg, #353535, #000000);
-  color: #ffffff;
-  font-family: "Eczar", serif;
+  background-color: #000000;
+  color: #fff;
+  font-family: "Eczar", serif;;
+  
 }
 
-.inicio {
-    display: flex;
-    justify-content: space-between;
-    font-family: 'UnifrakturMaguntia';
-    font-size: 30px;
+header {
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px;
+
 }
 
-.home {
-    color: #a70000;
-    font-size: 50px;
-    display: flex;
-    justify-content: end;
+header .logo {
+  width: 240px;
+  height: 50px;
+  margin-left: 50px;
 }
 
-#btnIniciarQuiz {
-    font-family: 'UnifrakturMaguntia';
-    border-radius: 10px;
-    color: #fff;
-    font-size: 20px;
-    background-color: #a70000;
-    border-style: none;
-    margin-top: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+header .links {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.quiz h2 {
-    font-family: 'UnifrakturMaguntia';
-    font-size: 50px;
+header .links a {
+  color: white;
+  font-size: 50px;
+  text-decoration: none;
+  font-family: 'UnifrakturMaguntia', cursive;
+  transition: color 0.3s ease;
+  text-align: right;
+  margin: 20px;
 }
 
-.quiz .img-quiz1 {
-    background-image: url(../img/quiz1.jpeg);
-    background-size: cover;
-    width: 520px;
-    height: 300px;
+header a:hover {
+  color: #a70000;
 }
 
-.quiz {
-    flex-direction: column;
-    display: flex;
+header a:last-child {
+  color: #a70000;
+}
+
+/******** DIV CARD-QUIZ *******/
+
+.container {
+    width: 50%;
+    height: 50%;
+    background-color: rgba(237, 50, 50, 0.785);
     justify-self: center;
-    align-items: center;
-    width: 600px;
-    box-shadow: 0 10px 20px #000000;
-    border-radius: 20px;
+    margin-top: 80px;
+    display: flex;
+    border-radius: 50px;
 }
 
-.flex-colunar {
+
+
+.perguntas {
+    width: 70%;
+    height: 70%;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    padding: 2%;
+    border-radius: 30px;
 }
 
-.width-fit-content {
-    width: fit-content;
-}
-
-.padding-8 {
-    padding: 8px;
-}
-
-.border-primary {
-    border-radius: 8px;
-}
-
-.border-secondary {
-    border-radius: 8px;
-}
-
-.text-bold {
-    font-weight: bold;
-}
-
-#pontuacaoEJogo {
+.questoes {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.pergunta{
+    color: #FFF;
+}
+
+.respostas {
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    margin: auto;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8%;
+}
+
+.botoes {
+    border-radius: 20px;
+    display: flex;
+    margin: auto;
+    border: none;
+    width: 45%;
+    height: 40px;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    color: #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5%;
 }
 
-#pontuacao {
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 10px 20px #000000;
-    max-width: 300px;
+.botoes:not(:disabled):hover {
+    filter: brightness(0.8);
+    transform: scale(1.2);
+}
+
+.hide {
+    display: none;
+}
+
+.correto {
+    background-color: #28a745;
+}
+
+.incorreto {
+    background-color: #dc3545;
+}
+
+.answer:disabled {
+    cursor: not-allowed;
+}
+
+.msgFinal {
+    font-size: 20px;
     text-align: center;
-    display: none;
-    align-self: center;
-    margin-top: 20px;
-}
-
-#pontuacaoDuranteJogo span,
-#pontuacaoFinalJogo span {
-    font-size: 16px;
-    color: #a70000;
-}
-
-#pontuacaoFinalJogo {
-    display: none;
-}
-
-#spanPontuacaoFinal {
-    color: #a70000;
+    color: #FFF;
     font-weight: bold;
+
+    span {
+        display: block;
+        margin-top: 2%;
+        font-weight: bold;
+        align-self: center;
+        font-size: 20px;
+    }
 }
 
-#msgFinal {
-    font-style: italic;
-    margin-top: 8px;
+.comecar-avancar {
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
 
-#jogo {
-    box-shadow: 0 10px 20px #000000;
-    width: 800px;
-    align-self: center;
-    justify-self: center;
-    display: none;
-    gap: 0;
+.start {
+    width: 50%;
+    height: 15%;
+    display: flex;
+    margin-top: 50%;
 }
 
-#infoQuestao span {
-    color: #a70000;
-    font-size: 20px;
-}
-
-#perguntaDaQuestaoAtual {
-    font-size: 18px;
-    line-height: 1.4;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-#infoAlternativas span {
-    color: #ffffff;
-    font-size: 12px;
-}
-
-#opcoes {
-    gap: 8px;
-}
-
-input[type='radio'] {
-   accent-color: #a70000;
-}
-
-#btnSubmeter {
-    font-family: 'UnifrakturMaguntia';
-    border-radius: 10px;
-    color: #fff;
-    font-size: 20px;
-    background-color: #a70000;
-    border-style: none;
-    margin-top: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#btnProx {
-    font-family: 'UnifrakturMaguntia';
-    border-radius: 10px;
-    color: #a70000;
-    font-size: 20px;
-    background-color: #ffffff;
-    border-style: none;
-    margin-top: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.end{
+    margin-top: 20%;
 }
