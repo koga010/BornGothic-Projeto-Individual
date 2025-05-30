@@ -22,6 +22,17 @@ function exibirDados(req, res) {
 }
 
 
+function buscarJogadoresPontuacoes(req, res) {
+
+    dashModel.buscarJogadoresPontuacoes()
+        .then(resultados => res.json(resultados))
+        .catch(erro => {
+            console.error('Erro ao buscar pontuações dos jogadores: ', erro);
+            res.status(500).json({ erro: 'Erro ao buscar as pontuações dos jogadores.' });
+        });
+}
+
 module.exports = {
-    exibirDados
+    exibirDados,
+    buscarJogadoresPontuacoes
 };

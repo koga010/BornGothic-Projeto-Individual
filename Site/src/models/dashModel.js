@@ -4,12 +4,12 @@ function selecionarDados(idUsuario) {
     const instrucaoSql = `
     SELECT 
         u.nome,
-        r.fk_usuario,
-        r.acertos,
-        r.erros,
-        r.data_resposta
-    FROM resultado_quiz as r
-    JOIN usuario as u ON r.fk_usuario = u.idUsuario
+        p.fkUsuario,
+        p.dtRealizacao,
+        p.acertos,
+        p.erros
+    FROM pontuacao as p
+    JOIN usuario as u ON p.fkUsuario = u.idUsuario
     WHERE u.idUsuario = ${Number(idUsuario)};
     `;
     console.log("Executando SQL para selecionar dados do usuário:", instrucaoSql);

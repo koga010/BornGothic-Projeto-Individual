@@ -111,7 +111,8 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    console.log(sessionStorage.ID_USUARIO)
                 });
 
                 mensagem_erro.innerHTML = `<b>AUTORIZADO!<br> Login efetuado com sucesso!`
@@ -120,7 +121,7 @@
                 setTimeout(() => {
                     mensagem_erro.innerHTML = ``
                     document.getElementById("card_erro").style.backgroundColor = ""
-                    window.location = "quizz.html"
+                    window.location = "quiz.html"
                 }, 2000)
 
             } else {

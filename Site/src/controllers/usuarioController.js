@@ -11,14 +11,14 @@ function autenticar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        usuarioModel.autenticar(email, senha) 
+        usuarioModel.autenticar(email, senha)
             .then(
                 function (resultado) {
                     if (resultado.length > 0) {
-                        
-                        res.json(resultado[0]); 
+
+                        res.json(resultado[0]);
                     } else {
-                      
+
                         res.status(403).send("Email e/ou senha inválidos!");
                     }
                 }
@@ -62,20 +62,44 @@ function cadastrar(req, res) {
     }
 }
 
-function obterTotalUsuarios(req, res) {
-    usuarioModel.contarUsuarios()
-        .then(resultado => {
-            res.json(resultado[0]); // envia { total: X }
-        })
-        .catch(erro => {
-            console.error("Erro ao contar usuários:", erro);
-            res.status(500).json({ mensagem: "Erro ao contar usuários." });
-        });
-    }
+// function obterTotalUsuarios(req, res) {
+//     usuarioModel.contarUsuarios()
+//         .then(resultado => {
+//             res.json(resultado[0]); 
+//         })
+//         .catch(erro => {
+//             console.error("Erro ao contar usuários:", erro);
+//             res.status(500).json({ mensagem: "Erro ao contar usuários." });
+//         });
+// }
+
+// function listarTop3(req, res) {
+//     usuarioModel.obterTop3()
+//         .then(resultado => {
+//             res.json(resultado);
+//         })
+//         .catch(erro => {
+//             console.error("Erro ao buscar top 3 usuários:", erro);
+//             res.status(500).json({ mensagem: "Erro ao buscar ranking." });
+//         });
+// }
+
+// function obterUsuariosPorGenero(req, res) {
+//     usuarioModel.UsuariosPorGenero()
+//         .then(resultado => {
+//             res.json(resultado);
+//         })
+//         .catch(erro => {
+//             console.error("Erro ao contar usuários por gênero:", erro);
+//             res.status(500).json({ mensagem: "Erro ao contar usuários por gênero." });
+//         });
+// }
 
 
 module.exports = {
     autenticar,
-    cadastrar,
-    obterTotalUsuarios
+    cadastrar
+    // obterTotalUsuarios,
+    // listarTop3,
+    // obterUsuariosPorGenero
 };

@@ -20,7 +20,7 @@ function registrarResultadoQuiz(req, res) {
             error: "Dados inválidos",
             message: mensagem
         });
-    }
+    } 
 
     quizModel.registrarResultadoQuiz(fkUsuario, acertos, erros)
         .then(resultado => {
@@ -37,6 +37,17 @@ function registrarResultadoQuiz(req, res) {
         });
 }
 
+function buscarPerguntas(req, res) {
+
+    quizModel.buscarPerguntas()
+        .then(resultado => res.json(resultado))
+        .catch(erro => {
+            console.error("Erro ao buscar perguntas:", erro)
+            res.status(500).json({ erro: "Erro ao buscar perguntas" })
+        });
+}
+
 module.exports = {
     registrarResultadoQuiz,
+    buscarPerguntas
 };

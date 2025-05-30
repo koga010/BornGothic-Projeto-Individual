@@ -17,7 +17,7 @@ fkQuiz INT,
 idPontuacao INT auto_increment,
 constraint pkComposta 
 primary key (idPontuacao, fkUsuario, fkQuiz),
-dtRealizacao DATETIME,
+dtRealizacao DATETIME default current_timestamp,
 acertos INT,
 erros INT,
 foreign key (fkUsuario) references usuario(idUsuario),
@@ -95,6 +95,35 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
 (10, "Apenas pessoas de determinada classe social", 0),
 (10, "Todas as pessoas, independentemente de gênero, raça, sexualidade ou condição", 1);
 
+    SELECT 
+        u.nome,
+        p.fkUsuario,
+        p.dtRealizacao,
+        p.acertos,
+        p.erros
+    FROM pontuacao as p
+    JOIN usuario as u ON p.fkUsuario = u.idUsuario
+    WHERE u.idUsuario = 2;
 
+  SELECT p.idPergunta, p.descricao AS pergunta, a.idAlternativa, a.resposta, a.correta
+        FROM (
+            SELECT idPergunta, descricao
+            FROM perguntas
+            ORDER BY RAND()
+            LIMIT 10
+        ) AS p
+        JOIN alternativas a ON a.fkPergunta = p.idPergunta
+        ORDER BY p.idPergunta, a.idAlternativa;
 
+        select * from quiz;
+        select * from pontuacao;
 
+          SELECT 
+        u.nome,
+        p.fkUsuario,
+        p.dtRealizacao,
+        p.acertos,
+        p.erros
+    FROM pontuacao as p
+    JOIN usuario as u ON p.fkUsuario = u.idUsuario
+    WHERE u.idUsuario = 1;
