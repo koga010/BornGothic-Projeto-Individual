@@ -93,6 +93,10 @@ header a:last-child {
     margin-top: 8px;
 }
 
+.msgFinal a{
+  color: #a70000;
+}
+
 .pergunta{
     font-size: 20px;
 }

@@ -64,6 +64,7 @@ header a:last-child {
   margin-right: 19%;
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 72%;
 }
 
