@@ -6,26 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="css/styleQuiz.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <script defer src="Js/quizJS.js"></script>
     <script defer src="Js/sessao.js"></script>
 </head>
 
 <body>
-    <div id="container">
-        
+
+    
         <header>
-            <img src="Style/assets/GymQuiz-logohalter.png" id="logo" alt="">
-        <div id="menuLateral">
-            <a href="index.html">Home</a>
-            <a href="quiz.html">Quiz</a>
-            <a href="dashboard.html">Dashboard</a>
-        </div>
+            <img class="logo" src="img/Born Gothic.png" alt="">
+            <div class="links">
+                <a href="quiz.html">Quiz</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a class="home" href="index.html">
+                    <i class="fa-sharp fa-solid fa-arrow-right-from-bracket" class="link-icone"></i>
+                </a>
+            </div>
         </header>
         
-
-        <div id="pontuacaoEJogo">
-            <h3 id="UsernameExib">Olá, <span id="b_usuario">usuário</span>!<br>Está Preparado?</h3>
+        
+        <div id="jogo">
+            <h3 id="nomeUsuario">Bem vindo(a), <span id="b_usuario">usuário</span>!<br>Deseja iniciar o quiz?</h3>
             <button class="start botoes" id="btnIniciarQuiz">Iniciar Quiz</button>
 
             <div class="container" id="containerPerguntas">
@@ -33,19 +40,19 @@
                     <div class="questoes hide">
                         <span class="pergunta">Pergunta</span>
                         <div class="respostas">
-                            <button class="botoes answer">Resposta1</button>
-                            <button class="botoes answer">Resposta2</button>
-                            <button class="botoes answer">Resposta3</button>
-                            <button class="botoes answer">Resposta4</button>
+                            <button class="botoesResposta answer">Resposta1</button>
+                            <button class="botoesResposta answer">Resposta2</button>
+                            <button class="botoesResposta answer">Resposta3</button>
+                            <button class="botoesResposta answer">Resposta4</button>
                         </div>
                     </div>
                     <div class="comecar-avancar">
-                        <button class="next botoes hide">Próxima pergunta</button>
+                        <button class="next btnProxima hide">Próxima pergunta</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 </body>
 
 </html>
@@ -64,7 +71,7 @@ var acertos = 0;
 var erros = 0;
 
 function start() {
-    UsernameExib.style.display="none"
+    nomeUsuario.style.display="none"
     comecarQuiz.style.display = "none"
 containerPerguntas.style.display = "flex"
     perguntas.classList.remove("hide")
@@ -92,7 +99,7 @@ function next() {
 
     listaDePerguntas[perguntaAtual].respostas.forEach(answer => {
         const novaResposta = document.createElement("button")
-        novaResposta.classList.add("botoes", "answer")
+        novaResposta.classList.add("botoesResposta", "answer")
         novaResposta.textContent = answer.text
 
         if (answer.correct) {
@@ -141,7 +148,7 @@ function finalizarQuiz() {
                 Você acertou ${acertos} de ${qtdPerguntas} perguntas!
             </p>
             <span>
-                Tente de novo ou acesse a dashboard e veja como foi seu desempenho comparado ao dos outros usuários
+                Acesse a dashboard para ver seu desempenho no quiz, ou faça outra tentativa
             </span>
             <button onclick="window.location.reload()" class="botoes end">
                 Tentar novamente
