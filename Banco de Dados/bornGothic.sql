@@ -40,6 +40,13 @@ correta TINYINT,
 Foreign Key (fkPergunta) REFERENCES perguntas(idPergunta),
 PRIMARY KEY(idAlternativa, fkPergunta));
 
+INSERT INTO usuario (nome, email, senha, idade) VALUES 
+('Ana Silva', 'ana.silva@email.com', 'senha123', 18),
+('Bruno Costa', 'bruno.costa@email.com', '123456', 24),
+('Carla Souza', 'carla.souza@email.com', 'abc@2024', 24),
+('Daniel Rocha', 'daniel.rocha@email.com', 'passw0rd', 19),
+('Eduarda Lima', 'eduarda.lima@email.com', 'minhaSenha', 19);
+
 INSERT INTO quiz VALUES
 (default, 'História e estética');
 
@@ -48,11 +55,11 @@ INSERT INTO perguntas (fkQuiz, descricao) VALUES
 (1, "Qual estilo musical está mais diretamente associado à subcultura gótica?"),
 (1, "Quais cores são predominantes na estética visual gótica?"),
 (1, "Qual é a origem histórica do termo “gótico”?"),
-(1, "Por que o termo “gótico” é considerado pejorativo em sua origem?"),
-(1, "Qual foi o impacto da ditadura militar brasileira na chegada da subcultura gótica ao Brasil?"),
+(1, "Qual dessas bandas ajudou a consolidar a música gótica nos anos 1980?"),--
+(1, "Qual obra é considerada o marco inicial da literatura gótica?"), --
 (1, "Quais autores brasileiros apresentam elementos da estética gótica em suas obras?"),
 (1, "Como a subcultura gótica se posiciona em relação ao gênero e à estética?"),
-(1, "Qual é a visão da subcultura gótica sobre o consumismo e a moda?"),
+(1, "Qual destes diretores é conhecido por suas releituras modernas do cinema gótico?"),--
 (1, "A subcultura gótica é aberta a quais tipos de pessoas?");
 
 INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
@@ -72,14 +79,14 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
 (4, "Refere-se a um estilo de pintura italiana", 0),
 (4, "Vem dos Godos, povo germânico que invadiu o Império Romano", 1),
 (4, "Nasceu com a Revolução Francesa", 0),
-(5, "Porque foi associado a práticas religiosas proibidas", 0),
-(5, "Porque era usado para designar tudo que era considerado bárbaro ou rude", 1),
-(5, "Porque representava um estilo de governo ditatorial", 0),
-(5, "Porque era usado por elites para descrever camponeses", 0),
-(6, "Acelerou a chegada do movimento gótico", 0),
-(6, "Proibiu totalmente a expressão artística", 0),
-(6, "Condicionou a produção cultural e atrasou a popularização do termo", 1),
-(6, "Incentivou a moda gótica como forma de resistência", 0),
+(5, "Nirvana", 0),
+(5, "The Cure", 1),
+(5, "The Beatles", 0),
+(5, "Metallica", 0),
+(6, "Drácula", 0),
+(6, "O Retrato de Dorian Gray", 0),
+(6, "O Castelo de Otranto", 1),
+(6, "Frankenstein", 0),
 (7, "Machado de Assis, Jorge Amado e Clarice Lispector", 0),
 (7, "Carlos Drummond, Cecília Meireles, Mário Quintana", 0),
 (7, "Ariano Suassuna, Rachel de Queiroz, José de Alencar", 0),
@@ -88,44 +95,51 @@ INSERT INTO alternativas (fkPergunta, resposta, correta) VALUES
 (8, "Segue tendências da moda comercial", 0),
 (8, "Promove a androginia e a liberdade de expressão visual", 1),
 (8, "Se limita a roupas pretas e visual sombrio apenas para mulheres", 0),
-(9, "É entusiasta do fast-fashion", 0),
-(9, "Segue tendências populares para ganhar visibilidade", 0),
-(9, "Pratica o anticonsumismo e prefere brechós, de forma mais sustentável", 1),
-(9, "Não possui relação com escolhas de consumo", 0),
+(9, "Martin Scorsese", 0),
+(9, "Steven Spielberg", 0),
+(9, "Tim Burton", 1),
+(9, "Quentin Tarantino", 0),
 (10, "Apenas pessoas com estilo dark", 0),
 (10, "Apenas jovens urbanos", 0),
 (10, "Apenas pessoas de determinada classe social", 0),
 (10, "Todas as pessoas, independentemente de gênero, raça, sexualidade ou condição", 1);
 
-    SELECT 
-        u.nome,
-        p.fkUsuario,
-        p.dtRealizacao,
-        p.acertos,
-        p.erros
-    FROM pontuacao as p
-    JOIN usuario as u ON p.fkUsuario = u.idUsuario
-    WHERE u.idUsuario = 2;
+SELECT 
+	u.nome,
+	p.fkUsuario,
+	p.dtRealizacao,
+	p.acertos,
+	p.erros
+FROM pontuacao as p
+JOIN usuario as u 
+ON p.fkUsuario = u.idUsuario
+WHERE u.idUsuario = 2;
 
-  SELECT p.idPergunta, p.descricao AS pergunta, a.idAlternativa, a.resposta, a.correta
-        FROM (
-            SELECT idPergunta, descricao
-            FROM perguntas
-            ORDER BY RAND()
-            LIMIT 10
-        ) AS p
-        JOIN alternativas a ON a.fkPergunta = p.idPergunta
-        ORDER BY p.idPergunta, a.idAlternativa;
+SELECT 
+	p.idPergunta, 
+    p.descricao AS pergunta, 
+    a.idAlternativa, 
+    a.resposta, 
+    a.correta
+FROM (SELECT idPergunta, descricao
+		FROM perguntas
+		ORDER BY RAND()
+		LIMIT 10
+) AS p
+JOIN alternativas a 
+ON a.fkPergunta = p.idPergunta
+ORDER BY p.idPergunta, a.idAlternativa;
 
-        select * from quiz;
-        select * from pontuacao;
+select * from quiz;
+select * from pontuacao;
 
-          SELECT 
-        u.nome,
-        p.fkUsuario,
-        p.dtRealizacao,
-        p.acertos,
-        p.erros
-    FROM pontuacao as p
-    JOIN usuario as u ON p.fkUsuario = u.idUsuario
-    WHERE u.idUsuario = 1;
+SELECT 
+	u.nome,
+	p.fkUsuario,
+	p.dtRealizacao,
+	p.acertos,
+	p.erros
+FROM pontuacao as p
+JOIN usuario as u 
+ON p.fkUsuario = u.idUsuario
+WHERE u.idUsuario = 1;
