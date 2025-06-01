@@ -66,6 +66,12 @@
                         <i class="fa-solid fa-lock"></i>
                     </div>
 
+                    <span>Idade</span>
+                    <div class="input">
+                        <input type="number" id="input_idade" placeholder="0">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
                     <button class="botao" onclick="cadastrar()">Cadastrar-se</button> <br><br>
 
                     <div class="login">
@@ -94,6 +100,7 @@
         var email = input_email.value
         var senha = input_senha.value
         var confirmacao_senha = input_confirmaSenha.value
+        var idade = input_idade.value
 
         if (nome.length < 3) {
             mensagem_erro.innerHTML = `<b>Nome inválido!<br> Deve ter no mínimo 3 caracteres!`
@@ -153,6 +160,14 @@
                 document.getElementById("card_erro").style.backgroundColor = ""
             }, 4000)
 
+        } else if (idade<=0) {
+              mensagem_erro.innerHTML = `<b>A idade deve ser maior que 0!`
+            document.getElementById("card_erro").style.backgroundColor = "rgb(39, 39, 39)"
+
+            setTimeout(() => {
+                mensagem_erro.innerHTML = ``
+                document.getElementById("card_erro").style.backgroundColor = ""
+            }, 4000)
         } else {
 
             fetch("/usuarios/cadastrar", {
@@ -163,7 +178,8 @@
                 body: JSON.stringify({
                     nomeServer: nome,
                     emailServer: email,
-                    senhaServer: senha
+                    senhaServer: senha,
+                    idadeServer: idade
                 }),
             })
                 .then(function (resposta) {

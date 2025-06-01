@@ -36,6 +36,7 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var idade = req.body.idadeServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -43,8 +44,10 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
+    } else if (idade == undefined) {
+        res.status(400).send("Sua idade está undefined!");
     } else {
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar(nome, email, senha, idade)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -62,44 +65,33 @@ function cadastrar(req, res) {
     }
 }
 
-// function obterTotalUsuarios(req, res) {
-//     usuarioModel.contarUsuarios()
-//         .then(resultado => {
-//             res.json(resultado[0]); 
-//         })
-//         .catch(erro => {
-//             console.error("Erro ao contar usuários:", erro);
-//             res.status(500).json({ mensagem: "Erro ao contar usuários." });
-//         });
-// }
+ function obterTotalUsuarios(req, res) {
+     usuarioModel.contarUsuarios()
+         .then(resultado => {
+             res.json(resultado[0]); 
+         })
+         .catch(erro => {
+             console.error("Erro ao contar usuários:", erro);
+             res.status(500).json({ mensagem: "Erro ao contar usuários." });
+         });
+ }
 
-// function listarTop3(req, res) {
-//     usuarioModel.obterTop3()
-//         .then(resultado => {
-//             res.json(resultado);
-//         })
-//         .catch(erro => {
-//             console.error("Erro ao buscar top 3 usuários:", erro);
-//             res.status(500).json({ mensagem: "Erro ao buscar ranking." });
-//         });
-// }
-
-// function obterUsuariosPorGenero(req, res) {
-//     usuarioModel.UsuariosPorGenero()
-//         .then(resultado => {
-//             res.json(resultado);
-//         })
-//         .catch(erro => {
-//             console.error("Erro ao contar usuários por gênero:", erro);
-//             res.status(500).json({ mensagem: "Erro ao contar usuários por gênero." });
-//         });
-// }
+function listarIdades(req, res) {
+    usuarioModel.listarIdades()
+        .then(resultado => {
+            res.json(resultado); // Ex: [{ idade: 18, quantidade: 5 }, { idade: 19, quantidade: 3 }]
+        })
+        .catch(erro => {
+            console.error("Erro ao listar idades:", erro);
+            res.status(500).json({ mensagem: "Erro ao listar idades." });
+        });
+}
 
 
 module.exports = {
     autenticar,
-    cadastrar
-    // obterTotalUsuarios,
-    // listarTop3,
-    // obterUsuariosPorGenero
+    cadastrar,
+    obterTotalUsuarios,
+    listarIdades
+   
 };

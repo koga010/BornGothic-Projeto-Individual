@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | BornGothic</title>
     <link rel="stylesheet" href="css/dash.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=UnifrakturMaguntia&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" 
-    />
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="Js/dashJS.js"></script>
 </head>
+
 <body>
-    
+
     <header>
         <img class="logo" src="img/Born Gothic.png" alt="">
 
@@ -24,7 +26,7 @@
                 <i class="fa-sharp fa-solid fa-arrow-right-from-bracket" class="link-icone"></i>
             </a>
         </div>
-    </header> 
+    </header>
 
     <div id="container">
 
@@ -43,7 +45,7 @@
 
                 <div class="boxKpi"> Usuários cadastrados:<p id="totalUsuarios">0</p>
                 </div>
-                <div class="boxKpi">Última tentativa:<p id="ultimaTentativa">2025-03-20</p>
+                <div class="boxKpi">Última tentativa:<p id="ultimaTentativa"></p>
                 </div>
             </div>
             <div class="dash">
@@ -62,6 +64,7 @@
     </div>
 
 </body>
+
 </html>
 
 <script>
@@ -71,16 +74,32 @@
         const nomeUsuario = sessionStorage.NOME_USUARIO;
         const idUsuario = sessionStorage.ID_USUARIO;
 
-        //if (!idUsuario) {
-        //    alert("Usuário não autenticado. Faça login novamente.");
-        //    window.location.href = "login.html";
-        //    return;
-        //}
+        if (!idUsuario) {
+            alert("Usuário não autenticado. Faça login novamente.");
+            window.location.href = "login.html";
+            return;
+        }
 
         bUsuario.textContent = nomeUsuario;
         obterDadosQuiz(idUsuario);
         buscarTotalUsuarios();
+        buscarIdades();
     };
+
+    function buscarIdades() {
+        fetch("/usuarios/idades")
+            .then(res => res.json())
+            .then(dados => {
+                const labels = dados.map(item => item.idade + " anos");
+                const valores = dados.map(item => item.quantidade);
+                exibirGraficoIdades(labels, valores);
+            })
+            .catch(erro => {
+                console.error("Erro ao buscar idades:", erro);
+            });
+    }
+
+
 
 
     function buscarTotalUsuarios() {
@@ -112,6 +131,67 @@
             });
     }
 
+    function buscarIdades() {
+        fetch("/usuarios/idades")
+            .then(res => res.json())
+            .then(dados => {
+                const labels = dados.map(item => item.idade + " anos");
+                const valores = dados.map(item => item.quantidade);
+                exibirGraficoIdades(labels, valores);
+            })
+            .catch(erro => {
+                console.error("Erro ao buscar idades:", erro);
+            });
+    }
+
+    function exibirGraficoIdades(labels, dados) {
+    const ctx = document.getElementById("idade").getContext("2d");
+
+    if (window.graficoIdade instanceof Chart) {
+        window.graficoIdade.destroy();
+    }
+
+    window.graficoIdade = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Quantidade de Usuários',
+                data: dados,
+                backgroundColor: '#6c63ff'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Distribuição de Idade dos Usuários',
+                    color: 'white',
+                    font: { size: 18 }
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: 'white' }
+                },
+                y: {
+                     beginAtZero: true  ,
+                    ticks: {
+                        display: true // <- Oculta os números do eixo Y
+                    },
+                   
+                }
+            }
+        }
+    });
+}
+
+
+
     function exibirDados(dados) {
         let totalAcertos = 0;
         let totalErros = 0;
@@ -123,9 +203,9 @@
             totalAcertos += resultado.acertos;
             totalErros += resultado.erros;
 
-            const dataResposta = new Date(resultado.data_resposta);
-            if (!ultimaTentativa || dataResposta > ultimaTentativa) {
-                ultimaTentativa = dataResposta;
+            const dtRealizacao = new Date(resultado.dtRealizacao);
+            if (!ultimaTentativa || dtRealizacao > ultimaTentativa) {
+                ultimaTentativa = dtRealizacao;
             }
         });
 
@@ -147,11 +227,11 @@
         const ctx = document.getElementById(canvasId).getContext('2d');
 
         if (window.graficoAcertosErros instanceof Chart) {
-          window.graficoAcertosErros.destroy();
+            window.graficoAcertosErros.destroy();
         }
 
         window.graficoAcertosErros = new Chart(ctx, {
-            type: 'bar',
+            type: 'pie',
             data: {
                 labels: ['Acertos', 'Erros'],
                 datasets: [{
@@ -184,4 +264,6 @@
             }
         });
     }
+
+
 </script>

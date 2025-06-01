@@ -1,11 +1,13 @@
 CREATE DATABASE bornGothic;
 USE bornGothic;
 
+
 CREATE TABLE usuario(
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(45),
 email VARCHAR(100),
-senha VARCHAR(45));
+senha VARCHAR(45),
+idade int);
 
 CREATE TABLE quiz(
 idQuiz INT PRIMARY KEY AUTO_INCREMENT,
