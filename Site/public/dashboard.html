@@ -13,15 +13,15 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="Js/dashJS.js"></script>
 </head>
 
 <body>
 
     <header>
         <img class="logo" src="img/Born Gothic.png" alt="">
-
         <div class="links">
+            <a href="quiz.html">Quiz</a>
+            <a href="dashboard.html">Dashboard</a>
             <a class="home" href="index.html">
                 <i class="fa-sharp fa-solid fa-arrow-right-from-bracket" class="link-icone"></i>
             </a>
@@ -31,40 +31,53 @@
     <div id="container">
 
         <div class="boxDash">
-            <h3 id="UsernameExib">Bem-vindo, <span id="b_usuario">usuário</span>!
+            <h3 id="nomeUsuario">Confira seus resultados, <span id="b_usuario">usuário</span>!
                 <br>
             </h3>
 
-            <div class="containerKpi">
-                <div class="boxKpi">Erros<p id="totalErros">0</p>
-                </div>
-                <div class="boxKpi">Acertos<p id="totalAcertos"></p>
-                </div>
-                <div class="boxKpi">Tentativas<p id="totalQuizzesJogados">0</p>
+            <div class="divisao">
+                <div class="kpi">
+
+                    <div class="containerKpi">
+                        <div class="boxKpi">
+                            Total de erros<p id="totalErros">0</p>
+                        </div>
+                        <div class="boxKpi">
+                            Total de certos<p id="totalAcertos"></p>
+                        </div>
+                        <div class="boxKpi">
+                            Tentativas<p id="totalQuizzesJogados">0</p>
+                        </div>
+                        <div class="boxKpi">
+                            Última tentativa:<p id="ultimaTentativa"></p>
+                        </div>
+                    </div>
+                    
+                    
                 </div>
 
-                <div class="boxKpi"> Usuários cadastrados:<p id="totalUsuarios">0</p>
-                </div>
-                <div class="boxKpi">Última tentativa:<p id="ultimaTentativa"></p>
+                <div class="dash">
+                    <div class="pontuacao">
+                        <canvas id="pontuacao"></canvas>
+                    </div>
+
+                    <div class="usuarios">
+                        <div class="boxKpi1"> 
+                            Total de usuários cadastrados:<p id="totalUsuarios">0</p>
+                        </div>
+
+                        <div class="idade">   
+                            <canvas id="idade"></canvas>
+                        </div>
+                    </div>
+                    
+
                 </div>
             </div>
-            <div class="dash">
-
-                <div class="pontuacao">
-                    <canvas id="pontuacao"></canvas>
-                </div>
-
-                <div class="idade">
-                    <canvas id="idade"></canvas>
-                </div>
-
-            </div>
-
         </div>
     </div>
 
 </body>
-
 </html>
 
 <script>
@@ -158,7 +171,7 @@
             datasets: [{
                 label: 'Quantidade de Usuários',
                 data: dados,
-                backgroundColor: '#6c63ff'
+                backgroundColor: '#541533'
             }]
         },
         options: {
@@ -234,10 +247,11 @@
             type: 'pie',
             data: {
                 labels: ['Acertos', 'Erros'],
+                color: 'white',
                 datasets: [{
-                    label: 'Desempenho do Usuário',
+                    label: 'Quantidade',
                     data: [acertos, erros],
-                    backgroundColor: ['#38B622', '#FF0000']
+                    backgroundColor: ['#27ff59a8', '#ff000094']
                 }]
             },
             options: {
@@ -245,22 +259,13 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Desempenho no Quiz',
+                        text: 'Seu desempenho no Quiz',
                         color: 'white',
-                        font: { size: 18 }
+                        font: { size: 20 }
                     },
-                    legend: { display: false }
+                    legend: { display: true }
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Quantidade',
-                            color: "white"
-                        }
-                    }
-                }
+                
             }
         });
     }
