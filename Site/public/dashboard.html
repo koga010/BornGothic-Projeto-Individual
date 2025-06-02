@@ -43,7 +43,7 @@
                             Total de erros<p id="totalErros">0</p>
                         </div>
                         <div class="boxKpi">
-                            Total de certos<p id="totalAcertos"></p>
+                            Total de acertos<p id="totalAcertos"></p>
                         </div>
                         <div class="boxKpi">
                             Tentativas<p id="totalQuizzesJogados">0</p>
@@ -194,9 +194,16 @@
                 y: {
                      beginAtZero: true,
                     ticks: {
-                        display: true
+                        stepSize: 1
                     },
-                   
+                    title: {
+                    display: true,
+                    text: 'Quantidade de Usuários',
+                    color: 'white',
+                    font: {
+                        size: 14
+                    }
+                    }
                 }
             }
         }
@@ -250,6 +257,7 @@
                 color: 'white',
                 datasets: [{
                     label: 'Quantidade',
+                    color: '#FFF',
                     data: [acertos, erros],
                     backgroundColor: ['#27ff59a8', '#ff000094']
                 }]
@@ -263,7 +271,7 @@
                         color: 'white',
                         font: { size: 20 }
                     },
-                    legend: { display: true }
+                    legend: { display: true, labels:{color:"#FFF"} }
                 },
                 
             }
