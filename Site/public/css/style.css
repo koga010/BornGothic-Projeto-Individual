@@ -431,17 +431,18 @@ section {
 .sobre h1 {
   text-shadow: 0 4px 5px #ffffff6f;
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  margin-bottom: 40px;
   font-family: 'UnifrakturMaguntia';
   font-size: 5rem;
 }
 
 .esquerda-sobre {
-  width: 40%;
+  width: 30%;
   display: flex;
   align-items: center;
   flex-direction: column;
-}
+  }
 
 .img-eu {
   background-image: url(../img/eu.jpeg);
@@ -454,4 +455,69 @@ section {
 .text1 p {
   font-family: 'Eczar';
   font-size: 20px;
+  font-weight: 700;
+  padding: 10px;
+}
+
+.text2 h2 {
+  font-family: 'UnifrakturMaguntia';
+  font-size: 50px;
+  text-shadow: 0 4px 5px #ffffff6f;
+
+}
+
+.divisao {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.direita-sobre {
+  display: flex;
+  width: 65%;
+}
+
+.text2 p {
+  font-family: 'Eczar';
+  font-size: 20px;
+  max-width: 800px;
+  text-align: justify;
+  margin-top: 30px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contato {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    color: #fff;
+    width: 500px;
+    gap: 10px;
+}
+
+.linhaFooter {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    gap: 10px;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+#LogoFooter {
+  width: 300px;
+}
+
+.imgFooter {
+  width: 50px;
 }

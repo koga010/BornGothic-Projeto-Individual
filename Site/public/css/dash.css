@@ -114,6 +114,11 @@ header a:last-child {
   border-radius: 10px;
   font-size: 20px;
   font-family: 'Eczar';
+
+  p {
+    font-size: 25px;
+    font-weight: 700;
+  }
 }
 
 .boxKpi1 {
@@ -127,6 +132,11 @@ header a:last-child {
   border-radius: 10px;
   font-size: 20px;
   font-family: 'Eczar';
+
+  p {
+    font-size: 25px;
+    font-weight: 700;
+  }
 }
 
 .dash {
